@@ -1,0 +1,8 @@
+#todo-list li {
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+.strike-through {
+  text-decoration: line-through;
+}
