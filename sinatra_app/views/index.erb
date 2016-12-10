@@ -1,0 +1,8 @@
+<form action='/' method='get'>
+  <input name='stock' type='text' placeholder='insert your code' />
+  <button>Get Stock</button>
+</form>
+<% unless @stock_code.nil? || @stock_code.empty? %>
+  <p><%= @stock_code %> Open Price: <%= @result[@stock_code].open %></p>
+<% end %>
+
