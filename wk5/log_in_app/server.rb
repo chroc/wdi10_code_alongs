@@ -1,8 +1,8 @@
-require 'sinatra'
-require 'sinatra/reloader'
 require 'pry'
-require_relative 'db_config'
-require_relative 'models/user'
+require 'sinatra'
+require 'active_record'
+require 'sinatra/activerecord'
+require_relative './models/user'
 
 set :bind, '0.0.0.0'
 set :port, '3000'
