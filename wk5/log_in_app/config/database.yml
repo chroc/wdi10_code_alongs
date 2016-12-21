@@ -2,7 +2,3 @@ development:
   adapter: postgresql
   database: log_in_app_development
 
-production:
-  adapter: postgresql
-  database: log_in_app_production
-

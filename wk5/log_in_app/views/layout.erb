@@ -6,8 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
   </head>
-  <body>
+  <body>   
     <h1>Log in application</h1>
+
+    <% if logged_in? %>
+      <form action='/session' method='post'>
+        <input type='hidden' name='_method' value='delete' />
+        <input type='submit' value='logout' />
+      </form>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

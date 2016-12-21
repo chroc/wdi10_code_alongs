@@ -2,6 +2,7 @@ require 'pry'
 require 'sinatra'
 require 'active_record'
 require 'sinatra/activerecord'
+require 'sinatra/reloader'
 require_relative './models/user'
 
 set :bind, '0.0.0.0'
@@ -13,7 +14,7 @@ helpers do
   def logged_in?
     !!current_user
   end
-
+ 
   def current_user
     User.find_by(id: session[:user_id])
   end
@@ -35,7 +36,7 @@ post '/session' do
     redirect to '/'
   else
     erb :session_new
-  end
+  end    
 end
 
 delete '/session' do
