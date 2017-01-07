@@ -3,12 +3,12 @@ class CookiesController < ApplicationController
 
   def index
     @cookies = Cookie.all
-    render json: @cookies
+    # render json: @cookies
   end
 
   def show
     @cookie = Cookie.find(params[:id])
-    render json: @cookie
+    # render json: @cookie
   end
 
   def create
