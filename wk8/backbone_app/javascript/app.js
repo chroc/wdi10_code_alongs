@@ -1,21 +1,24 @@
-console.log('ready to roll');
+var cookies = [
+  new Cookie({
+    id: 1,
+    name: 'shitty cookie',
+    description: 'tastes like...shit'
+  }),
+  new Cookie({
+    id: 2,
+    name: 'choc chip',
+    description: 'tasty chocolate'
+  }),
+  new Cookie({
+    id: 3,
+    name: 'snickerdoodle',
+    description: 'sugary cinnamon'
+  })
+];
 
-var dishes = [new Dish({
-  id: 1,
-  name: 'only puke',
-  desc: 'nuts'
-}), new Dish({
-  id: 2,
-  name: 'cemen dip',
-  desc: 'sauce'
-}), new Dish({
-  id: 3,
-  name: 'child shredded meat',
-  desc: 'beef floss'
-})];
-
-_.each(dishes, function(dish) {
-  var view = new ListItemView({ model: dish });
+_.each(cookies, function(cookie) {
+  var view = new ListItemView({ model: cookie });
   view.render();
   $('#list').append(view.el);
 });
+
