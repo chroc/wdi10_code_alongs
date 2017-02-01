@@ -20492,12 +20492,94 @@ module.exports = require('./lib/React');
 'use strict';
 
 var React = require('react');
+var TweetBox = require('./TweetBox');
+
+var App = React.createClass({
+  displayName: 'App',
+
+  getInitialState: function getInitialState() {
+    return { numbers: [10, 20, 30, 40] };
+  },
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'h1',
+        null,
+        'Tweet Box'
+      ),
+      this.state.numbers.map(function (elem, index) {
+        return React.createElement(TweetBox, { key: index, maxTweetLength: elem });
+      })
+    );
+  }
+});
+
+module.exports = App;
+
+},{"./TweetBox":180,"react":178}],180:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+
+var TweetBox = React.createClass({
+  displayName: 'TweetBox',
+
+  getInitialState: function getInitialState() {
+    return {
+      content: '',
+      maxTweet: this.props.maxTweetLength
+    };
+  },
+
+  handleChange: function handleChange(e) {
+    this.setState({ content: e.target.value });
+  },
+
+  render: function render() {
+    // var maxTweet = this.state.mTL;
+    // var content = this.state.content;
+
+    var _state = this.state,
+        content = _state.content,
+        maxTweet = _state.maxTweet;
+
+
+    var isDisabled = content.length <= 0 || content.length > maxTweet;
+
+    var spanStyle = content.length > maxTweet ? { color: 'red' } : {};
+
+    var spanClass = content.length > maxTweet ? 'warning' : '';
+
+    return React.createElement(
+      'div',
+      null,
+      React.createElement('textarea', { onChange: this.handleChange }),
+      React.createElement(
+        'button',
+        { disabled: isDisabled },
+        'tweet'
+      ),
+      React.createElement(
+        'span',
+        { className: spanClass },
+        maxTweet - content.length
+      )
+    );
+  }
+});
+
+module.exports = TweetBox;
+
+},{"react":178}],181:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
 var ReactDOM = require('react-dom');
+var App = require('./App');
 
-ReactDOM.render(React.createElement(
-  'h1',
-  null,
-  'Test Component'
-), document.getElementById('root'));
+ReactDOM.render(React.createElement(App, null), document.getElementById('root'));
 
-},{"react":178,"react-dom":25}]},{},[179]);
+},{"./App":179,"react":178,"react-dom":25}]},{},[181]);
